@@ -24,10 +24,10 @@ jobs:
           node-version: 26
           cache: npm
       - run: npm ci
-      - run: npx ng build --configuration production --base-href /gestor-noticias-angular/
+      - run: npx ng build --configuration production --base-href /gestor-noticias/
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: dist/gestor-noticias-angular/browser
+          path: dist/gestor-noticias/browser
 
   deploy:
     needs: build
