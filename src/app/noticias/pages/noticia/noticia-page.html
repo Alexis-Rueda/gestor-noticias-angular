@@ -1,0 +1,38 @@
+<app-title title="Gestor de noticias"/>
+
+<div class="bg-base-200 border-base-300 rounded-box border p-4 mt-4">
+  <p class="text-sm text-muted">Noticias en Json Pipe</p>
+  <code class="text-sm text-muted">
+    {{ noticias() | json }}
+  </code>
+</div>
+
+<div class="bg-base-200 border-base-300 rounded-box border p-4">
+  <p class="text-sm text-muted">Noticias en Json</p>
+  <code class="text-sm text-muted">
+    {{ noticiasJson }}
+  </code>
+</div>
+
+@if (noticias().length > 0) {
+  <app-list-noticia
+  [noticias]="noticias()"
+  (noticiaToUpdate)="onNoticiaToUpdate($event)"
+  (noticiaToDelete)="onNoticiaToDelete($event)" />
+}
+
+<div class="flex justify-start gap-2 mt-3">
+  <button class="btn btn-soft" (click)="currentAction.set('agregar')">Agregar noticia</button>
+</div>
+
+<div>
+  @if (currentAction() === 'editar' && noticiaToUpdate() !== null) {
+    <app-update-noticia
+      [noticiaToEdit]="noticiaToUpdate()!"
+      (onNoticiaUpdated)="onNoticiaUpdated($event)"/>
+  } @else {
+    <app-add-noticia
+      (onNoticiaCreated)="onNoticiaCreated($event)"/>
+  }
+</div>
+

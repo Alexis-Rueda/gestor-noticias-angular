@@ -1,9 +1,8 @@
-import { Noticia } from './../interfaces/noticia';
-
 import { Injectable, signal } from '@angular/core';
-import { noticiaToJson } from '../utils/noticias-utils';
 
-type Action = 'agregar' | 'editar';
+import { noticiaToJson } from '../utils/noticias-utils';
+import { Action } from '../interfaces/action';
+import { Noticia } from './../interfaces/noticia';
 
 @Injectable({providedIn: 'root'})
 export class NoticiasService {
