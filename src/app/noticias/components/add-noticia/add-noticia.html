@@ -1,0 +1,36 @@
+<fieldset class="fieldset bg-base-200 border-base-300 rounded-box border pb-4 px-4 pt-2">
+  <legend class="fieldset-legend">Agregar Noticia</legend>
+
+  <form  autocomplete="off" [formGroup]="myForm" (ngSubmit)="onSave()">
+
+    <fieldset class="fieldset">
+      <label class="label" for="titulo">Título</label>
+      <input type="text" id="titulo" class="input" placeholder="Título" formControlName="titulo" />
+    </fieldset>
+
+    <fieldset class="fieldset">
+      <label class="label" for="contenido">Contenido</label>
+      <textarea class="textarea h-24" placeholder="Contenido" formControlName="contenido"></textarea>
+    </fieldset>
+
+    <fieldset class="fieldset">
+      <label class="label" for="imagenUrl">Imagen Url</label>
+      <input type="text" id="imagenUrl" class="input" placeholder="Imagen Url" formControlName="imagenUrl" />
+    </fieldset>
+
+    <fieldset class="fieldset">
+      <label class="label" for="autor">Autor</label>
+      <input type="text" id="autor" class="input" placeholder="Autor" formControlName="autor" />
+    </fieldset>
+
+    <button type="submit" class="btn btn-neutral mt-4">Agregar</button>
+
+    @if (myForm.invalid && myForm.touched) {
+      <div class="inline-grid *:[grid-area:1/1]">
+        <div class="status status-error animate-ping"></div>
+        <div class="status status-error"></div>
+      </div> El formulario no es válido, por favor revisa los campos.
+    }
+
+  </form>
+</fieldset>
