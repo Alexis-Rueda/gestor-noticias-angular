@@ -1,0 +1,21 @@
+<ul class="list bg-base-200 border-base-300 rounded-box border pb-4 px-4 pt-2 mt-4">
+
+  <li class="p-4 pb-2 text-xs opacity-60 tracking-wide">Noticias</li>
+
+  @for (noticia of noticias(); track noticia.id) {
+    <li class="list-row">
+    <div><img class="size-10 rounded-box" alt="Random image" src="https://picsum.photos/200/300"/></div>
+    <div>
+      <div>{{noticia.titulo}}</div>
+      <div class="text-xs uppercase font-semibold opacity-60">{{noticia.autor}}</div>
+    </div>
+    <button (click)="setNoticiaToEdit(  noticia.id  )" class="btn btn-ghost">
+      Edit
+    </button>
+    <button (click)="setNoticiaToDelete(  noticia.id  )" class="btn btn-ghost">
+      Delete
+    </button>
+  </li>
+  }
+
+</ul>
